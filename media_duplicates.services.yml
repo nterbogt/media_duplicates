@@ -1,0 +1,7 @@
+services:
+  plugin.manager.media_duplicates.checksum:
+    class: Drupal\media_duplicates\Plugin\MediaDuplicatesChecksumPluginManager
+    parent: default_plugin_manager
+  media_duplicates.checksum_statistics:
+    class: Drupal\media_duplicates\ChecksumStatistics
+    arguments: ['@database']

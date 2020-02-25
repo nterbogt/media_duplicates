@@ -1,0 +1,7 @@
+media_duplicates.report:
+  path: '/admin/reports/media-duplicates'
+  defaults:
+    _controller: '\Drupal\media_duplicates\Controller\ReportController::overview'
+    _title: 'Media duplicates'
+  requirements:
+    _permission: 'access site reports'

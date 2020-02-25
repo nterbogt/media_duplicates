@@ -1,0 +1,28 @@
+{
+    "name": "drupal/media_duplicates",
+    "description": "Detect duplicate media entities.",
+    "type": "drupal-module",
+    "license": "GPL-2.0+",
+    "homepage": "https://drupal.org/project/media_duplicates",
+    "require-dev": {
+        "drupal/coder": "^8.3.3"
+    },
+    "authors": [
+        {
+            "name": "Nathan ter Bogt",
+            "homepage": "https://www.drupal.org/u/nterbogt",
+            "role": "Maintainer"
+        }
+    ],
+    "support": {
+        "issues": "https://www.drupal.org/project/issues/media_duplicates",
+        "source": "http://cgit.drupalcode.org/media_duplicates"
+    },
+    "extra": {
+        "drush": {
+            "services": {
+                "drush.services.yml": "^9"
+            }
+        }
+    }
+}

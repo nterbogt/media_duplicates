@@ -1,0 +1,5 @@
+services:
+  media_duplicates.commands:
+    class: Drupal\media_duplicates\Commands\MediaDuplicatesCommands
+    tags:
+      - { name: drush.command }

@@ -1,0 +1,61 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the media_duplicates module.
+ */
+
+use Drupal\Core\Url;
+
+/**
+ * Implements hook_requirements().
+ */
+function media_duplicates_requirements($phase) {
+  if ($phase !== 'runtime') {
+    return;
+  }
+
+  $requirements = [];
+  $checksum_statistics = \Drupal::service('media_duplicates.checksum_statistics');
+
+  $numberMissing = $checksum_statistics->numberOfMissingChecksums();
+  $requirements['media_duplicates_null'] = [
+    'title' => t('Media Duplicates Checksum'),
+    'value' => \Drupal::translation()->formatPlural($numberMissing, "1 media entity is missing a duplicates checksum", "%missing media entities are missing a duplicates checksum", [
+      '%missing' => $numberMissing,
+    ]),
+    'description' => [
+      '#markup' => t("This is usually caused by two possible issues. Watchdog should have more information."),
+      'reasons' => [
+        '#theme' => 'item_list',
+        '#items' => [
+          t('Not processing existing media when the module was enabled. This can be fixed by running <code>@command</code>.', [
+            '@command' => 'drush media-duplicates:refresh-checksums',
+          ]),
+          t("Using an unsupported media type. Please submit an issue to the plugin maintainer to implement a <code>@class</code> plugin.", [
+            '@class' => 'MediaDuplicatesChecksum',
+          ]),
+        ],
+      ],
+    ],
+    'severity' => ($numberMissing > 0) ? REQUIREMENT_WARNING : REQUIREMENT_OK,
+  ];
+
+  $checksums = $checksum_statistics->checksumsWithDuplicates();
+  $total = 0;
+  foreach ($checksums as $checksum => $count) {
+    $total += $count - 1;
+  }
+  $requirements['media_duplicates'] = [
+    'title' => t('Media Duplicates'),
+    'value' => \Drupal::translation()->formatPlural($total, "1 duplicate media entity", "%count duplicate media entities", [
+      '%count' => $total,
+    ]),
+    'description' => t('View the <a href=":report">media duplicates</a> report.', [
+      ':report' => Url::fromRoute('media_duplicates.report')->toString(),
+    ]),
+    'severity' => ($total > 0) ? REQUIREMENT_WARNING : REQUIREMENT_OK,
+  ];
+
+  return $requirements;
+}

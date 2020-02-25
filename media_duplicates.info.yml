@@ -1,0 +1,7 @@
+name: Media Duplicates
+type: module
+description: 'This module provides a framework to identify duplicate media entries.'
+package: Media
+core: '8.x'
+dependencies:
+  - drupal:media

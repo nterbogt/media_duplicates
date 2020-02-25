@@ -1,0 +1,5 @@
+media_duplicates.report:
+  title: 'Media duplicates'
+  parent: system.admin_reports
+  description: 'Display details about duplicate media entries.'
+  route_name: media_duplicates.report

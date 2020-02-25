@@ -1,0 +1,52 @@
+<?php
+
+/**
+ * @file
+ * Integration with Drupal for the media_duplicates module.
+ */
+
+use Drupal\Core\Entity\EntityTypeInterface;
+use Drupal\Core\Field\BaseFieldDefinition;
+use Drupal\media\Entity\Media;
+
+/**
+ * Implements hook_entity_base_field_info().
+ */
+function media_duplicates_entity_base_field_info(EntityTypeInterface $entity_type) {
+  $fields = [];
+
+  if ($entity_type->id() === 'media') {
+    // Add second link field. This one is translatable.
+    $fields['duplicates_checksum'] = BaseFieldDefinition::create('string')
+      ->setLabel(t('Duplicates checksum'))
+      ->setSetting('max_length', 64)
+      ->setDisplayOptions('form', [
+        'type' => 'hidden',
+      ])
+      ->setDisplayConfigurable('form', FALSE)
+      ->setDisplayOptions('view', [
+        'type' => 'hidden',
+      ])
+      ->setDisplayConfigurable('view', FALSE)
+      ->setTranslatable(TRUE)
+      ->setRevisionable(TRUE);
+  }
+
+  return $fields;
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_presave() for media.
+ */
+function media_duplicates_media_presave(Media $media) {
+  $id = $media->getSource()->getPluginId();
+  try {
+    /** @var \Drupal\media_duplicates\Plugin\MediaDuplicatesChecksumInterface $checksum_plugin */
+    $checksum_plugin = \Drupal::service('plugin.manager.media_duplicates.checksum')->createInstanceForMediaType($id);
+    $media->set('duplicates_checksum', $checksum_plugin->getChecksum($media));
+  }
+  catch (\Exception $e) {
+    $media->set('duplicates_checksum', NULL);
+    \Drupal::logger('media_duplicates')->warning('Unable to create checksum for ' . $id . '. ' . $e->getMessage());
+  }
+}
