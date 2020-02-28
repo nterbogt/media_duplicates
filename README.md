@@ -17,8 +17,9 @@ This module requires no modules outside of Drupal core.
 * To install this module, `composer require` it, or  place it in your modules
   folder and enable the module.
 
-* Generate initial checksums if you have existing media items. You can use the form linked from the status page or run 
-  the `drush media-duplicates:checksums:rebuild` command.
+* Generate initial checksums if you have existing media items. You can use the 
+  form linked from the status page or run the 
+  `drush media-duplicates:checksums:rebuild` command.
 
 
 ## Configuration
