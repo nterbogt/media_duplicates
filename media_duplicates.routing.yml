@@ -5,3 +5,10 @@ media_duplicates.report:
     _title: 'Media duplicates'
   requirements:
     _permission: 'access site reports'
+
+media_duplicates.refresh_checksums:
+  path: '/admin/reports/status/duplicate-checksums'
+  defaults:
+    _form: '\Drupal\media_duplicates\Form\RebuildDuplicatesForm'
+  requirements:
+    _permission: 'access administration pages'

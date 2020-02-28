@@ -29,7 +29,8 @@ function media_duplicates_requirements($phase) {
       'reasons' => [
         '#theme' => 'item_list',
         '#items' => [
-          t('Not processing existing media when the module was enabled. This can be fixed by running <code>@command</code>.', [
+          t('Not processing existing media when the module was enabled. This can be fixed by <a href=":refresh">rebuilding the checksums</a> or running <code>@command</code>.', [
+            ':refresh' => Url::fromRoute('media_duplicates.refresh_checksums')->toString(),
             '@command' => 'drush media-duplicates:refresh-checksums',
           ]),
           t("Using an unsupported media type. Please submit an issue to the plugin maintainer to implement a <code>@class</code> plugin.", [
