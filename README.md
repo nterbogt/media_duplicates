@@ -17,8 +17,8 @@ This module requires no modules outside of Drupal core.
 * To install this module, `composer require` it, or  place it in your modules
   folder and enable the module.
 
-* Run the `drush media-duplicates:refresh-checksums` command if you have 
-  existing media entities to update the comparison checksums.
+* Generate initial checksums if you have existing media items. You can use the form linked from the status page or run 
+  the `drush media-duplicates:refresh-checksums` command.
 
 
 ## Configuration
