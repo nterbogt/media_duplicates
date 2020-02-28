@@ -18,7 +18,7 @@ This module requires no modules outside of Drupal core.
   folder and enable the module.
 
 * Generate initial checksums if you have existing media items. You can use the form linked from the status page or run 
-  the `drush media-duplicates:refresh-checksums` command.
+  the `drush media-duplicates:checksums:rebuild` command.
 
 
 ## Configuration

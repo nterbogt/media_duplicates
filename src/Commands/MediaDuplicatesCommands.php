@@ -16,11 +16,11 @@ class MediaDuplicatesCommands extends DrushCommands {
    * Useful for initial installs on existing sites or if you change the
    * algorithms, or install plugins.
    *
-   * @command media-duplicates:refresh-checksums
+   * @command media-duplicates:checksums:rebuild
    *
    * @validate-module-enabled media_duplicates
    */
-  public function refreshChecksums() {
+  public function checksumsRebuild() {
     batch_set(MediaDuplicatesChecksumBatch::tasks());
     $batch =& batch_get();
     $batch['progressive'] = TRUE;
