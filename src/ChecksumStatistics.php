@@ -27,6 +27,29 @@ class ChecksumStatistics {
   }
 
   /**
+   * Whether the specified checksum already exists or not.
+   *
+   * @param string $checksum
+   *   The checksum to test.
+   *
+   * @return bool
+   */
+  public function checksumExists($checksum, $mid = NULL) {
+    $query = $this->database
+      ->select('media_field_data')
+      ->condition('duplicates_checksum', $checksum);
+
+    if ($mid !== NULL) {
+      $query->condition('mid', $mid, '!=');
+    }
+
+    $count = $query->countQuery()
+      ->execute()
+      ->fetchField();
+    return (int) $count > 0;
+  }
+
+  /**
    * Checksums with more than one entry against the published media entities.
    *
    * @return array

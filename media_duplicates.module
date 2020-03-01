@@ -50,3 +50,12 @@ function media_duplicates_media_presave(Media $media) {
     \Drupal::logger('media_duplicates')->warning('Unable to create checksum for ' . $id . '. ' . $e->getMessage());
   }
 }
+
+/**
+ * Implements hook_entity_type_alter().
+ */
+function media_duplicates_entity_type_alter(array &$entity_types) {
+  if (isset($entity_types['media'])) {
+    $entity_types['media']->addConstraint('MediaUniqueChecksum');
+  }
+}
