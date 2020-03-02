@@ -57,7 +57,7 @@ class ChecksumStatistics {
    */
   public function checksumsWithDuplicates() {
     $results = $this->database
-      ->query('SELECT duplicates_checksum, count(*) as x FROM {media_field_data} WHERE duplicates_checksum IS NOT NULL GROUP by duplicates_checksum HAVING x > 1 ORDER BY x DESC')
+      ->query('SELECT duplicates_checksum, count(*) as x FROM {media_field_data} WHERE duplicates_checksum IS NOT NULL GROUP by duplicates_checksum HAVING count(*) > 1 ORDER BY x DESC')
       ->fetchAllKeyed(0);
     return $results;
   }
