@@ -1,3 +1,9 @@
+media_duplicates.settings:
+  title: 'Media duplicates settings'
+  parent: system.admin_config_media
+  description: 'Edit media duplicates settings.'
+  route_name: media_duplicates.settings
+
 media_duplicates.report:
   title: 'Media duplicates'
   parent: system.admin_reports
