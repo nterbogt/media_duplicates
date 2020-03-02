@@ -6,9 +6,16 @@ media_duplicates.report:
   requirements:
     _permission: 'access site reports'
 
+media_duplicates.settings:
+  path: '/admin/config/media/media-duplicates'
+  defaults:
+    _form: '\Drupal\media_duplicates\Form\MediaDuplicatesSettings'
+  requirements:
+    _permission: 'administer media'
+
 media_duplicates.refresh_checksums:
   path: '/admin/reports/status/duplicate-checksums'
   defaults:
     _form: '\Drupal\media_duplicates\Form\RebuildDuplicatesForm'
   requirements:
-    _permission: 'access administration pages'
+    _permission: 'administer media'
