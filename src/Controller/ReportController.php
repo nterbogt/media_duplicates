@@ -57,13 +57,19 @@ class ReportController extends ControllerBase {
    */
   public function overview() {
     $header = [
-      'Checksum',
-      'Count',
-      'Entities',
+      $this->t('Checksum'),
+      $this->t('Count'),
+      $this->t('Entities'),
     ];
     $rows = [];
 
     $checksum_results = $this->checksumStatistics->checksumsWithDuplicates();
+
+    if (empty($checksum_results)) {
+      return [
+        '#markup' => $this->t('You have no duplicate checksums.'),
+      ];
+    }
 
     $media_results = $this->database
       ->select('media_field_data', 'mfd')
