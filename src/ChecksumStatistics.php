@@ -31,8 +31,11 @@ class ChecksumStatistics {
    *
    * @param string $checksum
    *   The checksum to test.
+   * @param int $mid
+   *   A media entity ID to exclude from the check.
    *
    * @return bool
+   *   Whether the checksum is already in use.
    */
   public function checksumExists($checksum, $mid = NULL) {
     $query = $this->database

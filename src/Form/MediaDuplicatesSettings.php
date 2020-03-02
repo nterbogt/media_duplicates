@@ -39,7 +39,7 @@ class MediaDuplicatesSettings extends ConfigFormBase {
     $form['restrict_new_media_only'] = [
       '#type' => 'checkbox',
       '#title' => $this->t('Only restrict duplicates on new media items.'),
-      '#description' => $this->t('This is useful if you already have duplicate items and you want your users to continue editing them, but don\'t want new duplicates to be added.'),
+      '#description' => $this->t("This is useful if you already have duplicate items and want your users to continue editing them, but don't want new duplicates to be added."),
       '#default_value' => $config->get('restrict_new_media_only'),
     ];
 
@@ -63,4 +63,5 @@ class MediaDuplicatesSettings extends ConfigFormBase {
 
     parent::submitForm($form, $form_state);
   }
+
 }

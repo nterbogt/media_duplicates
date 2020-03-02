@@ -15,7 +15,11 @@ use Symfony\Component\Validator\Constraint;
  */
 class MediaUniqueChecksum extends Constraint {
 
-  // The message that will be shown if the value is not unique.
-  public $notUnique = '%value is not unique';
+  /**
+   * The message that will be displayed if the media entity fails validation.
+   *
+   * @var string
+   */
+  public $notUnique = 'This %value already exists as a media entity in the system';
 
 }
