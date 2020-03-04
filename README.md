@@ -3,7 +3,7 @@
 ## Introduction
 
 This module allows the comparison, detection and restriction of duplicate media
-entities within a site. 
+entities within a site.
 
 This module does not provide any methods for cleaning up the duplicate items.
 
