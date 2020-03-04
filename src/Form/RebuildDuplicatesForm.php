@@ -25,7 +25,7 @@ class RebuildDuplicatesForm extends ConfirmFormBase {
    * {@inheritdoc}
    */
   public function getQuestion() {
-    return t('Are you sure you want to rebuild the checksums on media?');
+    return $this->t('Are you sure you want to rebuild the checksums on media?');
   }
 
   /**
@@ -39,14 +39,14 @@ class RebuildDuplicatesForm extends ConfirmFormBase {
    * {@inheritdoc}
    */
   public function getConfirmText() {
-    return t('Rebuild checksums');
+    return $this->t('Rebuild checksums');
   }
 
   /**
    * {@inheritdoc}
    */
   public function getDescription() {
-    return t('This action rebuilds all checksums on media, and may be a lengthy process. This action cannot be undone.');
+    return $this->t('This action rebuilds all checksums on media, and may be a lengthy process. This action cannot be undone.');
   }
 
   /**
