@@ -2,9 +2,10 @@
 
 ## Introduction
 
-This module allows the comparison and detection of duplicate media entities
-within a site. This module does not provide any methods for cleaning up the 
-duplicate items.
+This module allows the comparison, detection and restriction of duplicate media
+entities within a site. 
+
+This module does not provide any methods for cleaning up the duplicate items.
 
 
 ## Requirements
@@ -24,7 +25,8 @@ This module requires no modules outside of Drupal core.
 
 ## Configuration
 
-There is currently no configuration options for the module.
+Media duplicates provides a configuration page where an administrator can
+restrict the creation of duplicate media items.
 
 
 ## Maintainers

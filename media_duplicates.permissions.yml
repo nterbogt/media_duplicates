@@ -1,0 +1,4 @@
+administer media duplicates:
+  title: 'Administer media duplicates'
+  description: 'Administer media duplication settings and allow rebuilding checksums.'
+  restrict access: true

@@ -12,11 +12,11 @@ media_duplicates.settings:
     _form: '\Drupal\media_duplicates\Form\MediaDuplicatesSettings'
     _title: 'Media duplicates'
   requirements:
-    _permission: 'administer media'
+    _permission: 'administer media duplicates'
 
 media_duplicates.refresh_checksums:
   path: '/admin/reports/status/duplicate-checksums'
   defaults:
     _form: '\Drupal\media_duplicates\Form\RebuildDuplicatesForm'
   requirements:
-    _permission: 'administer media'
+    _permission: 'administer media duplicates'

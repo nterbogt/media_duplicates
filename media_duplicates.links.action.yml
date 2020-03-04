@@ -1,0 +1,5 @@
+media_duplicates.refresh_checksums:
+  route_name: media_duplicates.refresh_checksums
+  title: 'Rebuild checksums'
+  appears_on:
+    - media_duplicates.settings
